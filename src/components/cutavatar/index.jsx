@@ -63,7 +63,7 @@ export default function Cutt() {
         <img id='image' src={imgURL}/>
       </div>
       <div className='btn'>
-        <input className='reupload' onChange={(e)=>reupload(e)} type='file' id='reupload' accept='/image*'/>
+        <input className='reupload' onChange={(e)=>reupload(e)} type='file' id='reupload' accept='image/*'/>
         <label htmlFor="reupload">重新选择</label>
         <button className='cut' onClick={clip} >确定</button>
       </div>

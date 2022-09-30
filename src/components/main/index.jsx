@@ -63,8 +63,16 @@ const Main =()=>{
         downloadRef.current.width = width
         downloadRef.current.height = height
         let myimage = new Image()
+        if(!imgURL){
+            alert('请选择图片')
+            return
+        }
         myimage.src = imgURL
         let background = new Image()
+        if(!kuang){
+            alert('请选择头像框')
+            return
+        }
         background.src = kuang
         if(downloadRef.current.getContext){
             let ctx = downloadRef.current.getContext('2d')
@@ -99,10 +107,10 @@ const Main =()=>{
                     {kuang?<img id="id_img2" src={`${kuang}`} alt="" className="img_hidden"></img>: ""}
                 </label>
                 <label className="upload" htmlFor="id-uploadimg">
-                   <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='/image*'/>
+                   <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='image/*'/>
                      {imgURL?<img className='the-img' src={imgURL} />:<label className="upload_button" htmlFor='id-uploadimg'  ><img src={jiahao} className='uploadlogo'></img></label>}
                 </label>
-                {/* <input type="file" onTouchStart={chooseImg} accept='/image*'/> */}
+                {/* <input type="file" onTouchStart={chooseImg} accept='image/*'/> */}
                 <div className="tip_text">请选择你的个性头像框</div>
                 <div className="choices">
                 <div className="box1">
