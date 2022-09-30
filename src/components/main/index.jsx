@@ -99,7 +99,7 @@ const Main =()=>{
                     {kuang?<img id="id_img2" src={`${kuang}`} alt="" className="img_hidden"></img>: ""}
                 </label>
                 <label className="upload" htmlFor="id-uploadimg">
-                   <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='*/image'/>
+                   <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='/image*'/>
                      {imgURL?<img className='the-img' src={imgURL} />:<label className="upload_button" htmlFor='id-uploadimg'  ><img src={jiahao} className='uploadlogo'></img></label>}
                 </label>
                 {/* <input type="file" onTouchStart={chooseImg} accept='/image*'/> */}
