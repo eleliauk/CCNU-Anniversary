@@ -2,16 +2,8 @@ import React, { useRef, useState , useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
 import './index.css';
-import background from '../../images/background.jpg';
 import jiahao from '../../images/jiahao.png';
-import one from '../../images/one.png';
-import two from '../../images/two.png';
-import three from '../../images/three.png';
-import four from '../../images/four.png';
-import five from '../../images/five.png';
-import six from '../../images/six.png';
-import eight from '../../images/eight.png';
-import nine from '../../images/nine.png';
+
 
 
 const Main =()=>{
@@ -39,7 +31,7 @@ const Main =()=>{
         return () => {
           localStorage.clear()
         }
-      },[])
+      },)
 
     const uploadImg = (e)=>{
         const files = e.target.files
@@ -69,23 +61,28 @@ const Main =()=>{
         }
         myimage.src = imgURL
         let background = new Image()
+        console.log(background);
         if(!kuang){
             alert('请选择头像框')
             return
         }
+        console.log(kuang);
+        background.setAttribute("crossOrigin",'Anonymous')
         background.src = kuang
+        // let base64kuang = background.getBase64Image()
         if(downloadRef.current.getContext){
             let ctx = downloadRef.current.getContext('2d')
             myimage.onload = function(){
                 ctx.drawImage(myimage,0,0,width,height)
                 background.onload = function() {
-                    ctx.drawImage(background,0,0,width,height)
+                    console.log(ctx.drawImage(background,0,0,width,height));
                     let url = downloadRef.current.toDataURL();
                     let a = document.createElement("a"); // 生成一个a元素
                     let event = new MouseEvent("click"); // 创建一个单击事件
                     a.download = name || "avatar"; // 设置图片名称
                     a.href = url; // 将生成的URL设置为a.href属性
                     a.dispatchEvent(event); // 触发a的单击事件
+                    plus.gallery.save()
                 }
 
             }
@@ -98,13 +95,13 @@ const Main =()=>{
         isMobile?
         <div className="body">
             <div className='photo'>
-                <img src={background} alt="" className="background"></img>
+                <img src='http://osscelebrate.muxixyz.com/background.6b63981e.jpg' alt="" className="background"></img>
                 <div className="zhuangshi"></div>
             </div>
             <div className="content">
                 <canvas ref={downloadRef} id='canvas'></canvas>
                 <label className="hidden" htmlFor="id-uploadimg">
-                    {kuang?<img id="id_img2" src={`${kuang}`} alt="" className="img_hidden"></img>: ""}
+                    {kuang?<img id="id_img2" src={kuang} alt="" className="img_hidden"></img>: ""}
                 </label>
                 <label className="upload" htmlFor="id-uploadimg">
                    <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='image/*'/>
@@ -116,19 +113,19 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img1' className='txkuang' src={one} alt='' onClick={chooseOutimg}></img>
+                            <img id='img1' className='txkuang' src='http://osscelebrate.muxixyz.com/one.647280f8.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花枝头</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img2' className='txkuang' src={two} alt='' onClick={chooseOutimg}></img>
+                            <img id='img2' className='txkuang' src='http://osscelebrate.muxixyz.com/two.38db8952.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花朵朵</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img3' className='txkuang' src={three} alt='' onClick={chooseOutimg}></img>
+                            <img id='img3' className='txkuang' src='http://osscelebrate.muxixyz.com/three.5cf31062.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花茶饮</div>
                     </div>
@@ -136,19 +133,19 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img4' className='txkuang' src={four} alt='' onClick={chooseOutimg}></img>
+                            <img id='img4' className='txkuang' src='http://osscelebrate.muxixyz.com/four.1f4a5f26.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">祥云贺庆</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img9' className='txkuang' src={nine} alt='' onClick={chooseOutimg}></img>
+                            <img id='img9' className='txkuang' src='http://osscelebrate.muxixyz.com/nine.a025a668.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">119校庆红</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img8' className='txkuang' src={eight} alt='' onClick={chooseOutimg}></img>
+                            <img id='img8' className='txkuang' src='http://osscelebrate.muxixyz.com/eight.226b4eef.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">华师红心</div>
                     </div>
@@ -156,13 +153,13 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img5' className='txkuang' src={five} alt='' onClick={chooseOutimg}></img>
+                            <img id='img5' className='txkuang' src='http://osscelebrate.muxixyz.com/five.78769362.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花小诗</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img6' className='txkuang' src={six} alt='' onClick={chooseOutimg}></img>
+                            <img id='img6' className='txkuang' src='http://osscelebrate.muxixyz.com/six.00e22396.png' alt='' onClick={chooseOutimg}></img>
                         </div>
                         <div className="p">镂空华师绿</div>
                     </div>
