@@ -1,0 +1,189 @@
+.body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.photo {
+    width: 100%;
+    height: 17rem;
+    background-size: contain;
+    /* border-bottom: 1px solid #E6CB4D; */
+}
+.background {
+    width: 100%;
+    height: 100%;
+}
+.zhuangshi {
+    width: 100%;
+    height: 2rem;
+    border-radius: 2.5rem 2.5rem 0 0;
+    background-color: #E6CB4D;
+    position: absolute;
+    top: 15rem;
+}
+.content {
+    background-image: linear-gradient(to bottom , #E6CB4D, #FFFFFF);
+    width: 100%;
+    height: auto;
+    position: relative;
+    /* border-radius: 1.5rem 1.5rem 0 0;
+    position: absolute;
+    top: 16rem;
+    left: 0; */
+}
+.upload {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 28vw;
+    height: 28vw;
+    top: -22vw;
+    left: 36%;
+    background-color: #fff;
+    border-radius: 0.7rem;
+}
+
+.uploadimg {
+    display: none;
+}
+
+.upload_button {
+    margin: 0;
+    background-color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.the-img {
+    width: 100%;
+    border-radius: 0.7rem;
+}
+
+.uploadlogo {
+    margin: 0;
+    background-color: white;
+    width: 3.5rem;
+    height: 3.5rem;
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.tip_text {
+    padding-top: 10vw;
+    font-size: 1rem;
+    font-family: PingFang SC-Regular, PingFang SC;
+    font-weight: 400;
+    color: #255C7D;
+    text-align: center;
+    align-items: center;
+}
+.choices {
+    /* width: 90vw; */
+    height: 50vh;
+    margin: 5vw auto 5rem;
+    /* 不知道怎么控制高度 */
+    overflow: auto;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    background-color: transparent;
+    
+}
+.box1 {
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 90vw;
+    /* margin-left: 3vw; */
+    /* height: 12rem; */
+    background-color: #EF8A76;
+    margin: 0 auto 0.8rem;
+    border-radius: 1rem;
+}
+.box3 {
+   /* width: 4.5rem;
+   height: 4.5rem; */
+   width: 9vh;
+   height: 9vh;
+   margin-top: 1rem;
+   background-color: #fff; 
+}
+
+.txkuang {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+
+.p {
+    text-align: center;
+    font-size: 0.6rem;
+    font-family: PingFang SC-Light, PingFang SC;
+    font-weight: 400;
+    color: #333;
+    margin: 0.3rem auto 0.5rem;
+}
+.bottom {
+    display: flex;
+    width: 100%;
+    height: 5rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #fff;
+}
+.bot_button1 {
+    width: 40vw;
+    height: 3rem;
+    margin: 1rem auto;
+    background-color: #D7674F;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    border-radius: 0.6rem;
+}
+
+.bot_button2 {
+    margin: 0;
+    padding: 0;
+    width: 40vw;
+    height: 3rem;
+    margin: 1rem auto;
+    background-color: #D7674F;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    border-radius: 0.6rem;
+}
+
+.hidden {
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+    position: absolute;
+    width: 28vw;
+    height: 28vw;
+    top: -22vw;
+    left: 36%;
+    border-radius: 0.7rem;
+    background-color: transparent;
+}
+.img_hidden {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.7rem;
+}
+
+#canvas {
+    display: none;
+}
