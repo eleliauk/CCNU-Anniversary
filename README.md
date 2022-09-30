@@ -1,2 +1,2 @@
 # CCNU-Anniversary
-# 华师校庆头像框小程序
+# 华师校庆头像框H5
