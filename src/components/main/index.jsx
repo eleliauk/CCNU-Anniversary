@@ -1,8 +1,8 @@
 import React, { useRef, useState , useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router';
-
 import './index.css';
 import jiahao from '../../images/jiahao.png';
+import background from '../../images/background.jpg'
 
 
 
@@ -64,7 +64,7 @@ const Main =()=>{
         }
         myimage.src = imgURL
         let background = new Image()
-        console.log(background);
+        //console.log(background);
         if(!kuang){
             alert('请选择头像框')
             return
@@ -110,7 +110,7 @@ const Main =()=>{
         isMobile?
         <div className="body">
             <div className='photo'>
-                <img src='http://osscelebrate.muxixyz.com/background.6b63981e.jpg' alt="" className="background"></img>
+                <img src={background} alt="" className="background"></img>
                 <div className="zhuangshi"></div>
             </div>
             <div className="content">
