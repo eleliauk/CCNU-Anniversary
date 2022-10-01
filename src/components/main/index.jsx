@@ -32,9 +32,6 @@ const Main =()=>{
             setIsMobile(false)
             alert('请使用手机打开以获得更好的体验')
         }
-        return () => {
-          localStorage.clear()
-        }
       },)
 
     const uploadImg = (e)=>{
@@ -52,7 +49,7 @@ const Main =()=>{
         setId(e.target.id)
         setKuang(e.target.src)
         setIsChoose(true)
-        localStorage.setItem('kuang',kuang)
+        localStorage.setItem('kuang',e.target.src)
     }
 
     function drawCanvasImage() {
@@ -134,19 +131,19 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img1' className='txkuang' src='http://osscelebrate.muxixyz.com/one.647280f8.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img1' className='txkuang' src='http://osscelebrate.muxixyz.com/one.647280f8.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花枝头</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img2' className='txkuang' src='http://osscelebrate.muxixyz.com/two.38db8952.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img2' className='txkuang' src='http://osscelebrate.muxixyz.com/two.38db8952.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花朵朵</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img3' className='txkuang' src='http://osscelebrate.muxixyz.com/three.5cf31062.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img3' className='txkuang' src='http://osscelebrate.muxixyz.com/three.5cf31062.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花茶饮</div>
                     </div>
@@ -154,19 +151,19 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img4' className='txkuang' src='http://osscelebrate.muxixyz.com/four.1f4a5f26.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img4' className='txkuang' src='http://osscelebrate.muxixyz.com/four.1f4a5f26.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">祥云贺庆</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img9' className='txkuang' src='http://osscelebrate.muxixyz.com/nine.a025a668.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img9' className='txkuang' src='http://osscelebrate.muxixyz.com/nine.a025a668.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">119校庆红</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img8' className='txkuang' src='http://osscelebrate.muxixyz.com/eight.226b4eef.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img8' className='txkuang' src='http://osscelebrate.muxixyz.com/eight.226b4eef.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">华师红心</div>
                     </div>
@@ -174,13 +171,13 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img5' className='txkuang' src='http://osscelebrate.muxixyz.com/five.78769362.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img5' className='txkuang' src='http://osscelebrate.muxixyz.com/five.78769362.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">桂花小诗</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img6' className='txkuang' src='http://osscelebrate.muxixyz.com/six.00e22396.png' alt='' onClick={chooseOutimg}></img>
+                            <img id='img6' className='txkuang' src='http://osscelebrate.muxixyz.com/six.00e22396.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
                         <div className="p">镂空华师绿</div>
                     </div>
