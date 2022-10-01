@@ -17,6 +17,10 @@ const Main =()=>{
     const [id, setId] = useState('')
     const [kuang, setKuang] = useState(localStorage.getItem('kuang')?localStorage.getItem('kuang'):'')
     const [context, setContext] = useState('')
+    const [downloadURL,setDownloadURL] = useState('')
+    const [isDownload,setIsDownload] = useState(false)
+    const [isTip,setIsTip] = useState(false)
+    const [isChoose,setIsChoose] = useState(true)
     const downloadRef = useRef()
 
     useEffect(() => {
@@ -38,6 +42,7 @@ const Main =()=>{
         const file = files[0]
         const imgURL = URL.createObjectURL(file)
         setImgURL(imgURL)
+        setIsChoose(true)
         navigate('/editImage',{state:{imgURL:imgURL}})
     }
 
@@ -46,6 +51,7 @@ const Main =()=>{
         // document.getElementsByTagName("img")[0].setAttribute('id', "id_img2")
         setId(e.target.id)
         setKuang(e.target.src)
+        setIsChoose(true)
         localStorage.setItem('kuang',kuang)
     }
 
@@ -66,7 +72,7 @@ const Main =()=>{
             alert('请选择头像框')
             return
         }
-        console.log(kuang);
+        //console.log(kuang);
         background.setAttribute("crossOrigin",'Anonymous')
         background.src = kuang
         // let base64kuang = background.getBase64Image()
@@ -75,20 +81,32 @@ const Main =()=>{
             myimage.onload = function(){
                 ctx.drawImage(myimage,0,0,width,height)
                 background.onload = function() {
-                    console.log(ctx.drawImage(background,0,0,width,height));
-                    let url = downloadRef.current.toDataURL();
-                    let a = document.createElement("a"); // 生成一个a元素
-                    let event = new MouseEvent("click"); // 创建一个单击事件
-                    a.download = name || "avatar"; // 设置图片名称
-                    a.href = url; // 将生成的URL设置为a.href属性
-                    a.dispatchEvent(event); // 触发a的单击事件
-                    plus.gallery.save()
+                    ctx.drawImage(background,0,0,width,height)
+                    downloadImage()
                 }
 
             }
         }
+    }
 
- 
+    const downloadImage = ()=>{
+        if(window.innerWidth < 1000 ) {
+            const url = downloadRef.current.toDataURL()
+            setDownloadURL(url)
+            setIsDownload(true)
+            setIsTip(true)
+            setTimeout(() => {
+                setIsTip(false);
+              }, 3000);
+            setIsChoose(false)
+        } else {
+            const url = downloadRef.current.toDataURL();
+            const a = document.createElement("a"); // 生成一个a元素
+            const event = new MouseEvent("click"); // 创建一个单击事件
+            a.download = name || "avatar"; // 设置图片名称
+            a.href = url; // 将生成的URL设置为a.href属性
+            a.dispatchEvent(event); // 触发a的单击事件
+        }
     }
 
     return (
@@ -100,15 +118,18 @@ const Main =()=>{
             </div>
             <div className="content">
                 <canvas ref={downloadRef} id='canvas'></canvas>
-                <label className="hidden" htmlFor="id-uploadimg">
+               {isDownload&&(!isChoose)?<img src={downloadURL} className="downloadURL"/>:<label className="hidden" htmlFor="id-uploadimg">
                     {kuang?<img id="id_img2" src={kuang} alt="" className="img_hidden"></img>: ""}
-                </label>
+                </label>}
                 <label className="upload" htmlFor="id-uploadimg">
                    <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='image/*'/>
                      {imgURL?<img className='the-img' src={imgURL} />:<label className="upload_button" htmlFor='id-uploadimg'  ><img src={jiahao} className='uploadlogo'></img></label>}
                 </label>
                 {/* <input type="file" onTouchStart={chooseImg} accept='image/*'/> */}
                 <div className="tip_text">请选择你的个性头像框</div>
+                {isTip&&<div className='Message'>
+                    <p>长按保存图片哦~</p>
+                </div>}
                 <div className="choices">
                 <div className="box1">
                     <div className="box2">
@@ -166,10 +187,10 @@ const Main =()=>{
                 </div>
             </div>
         </div>
-            <div className="bottom">
+        <div className="bottom">
                 <div id="btn" className="bot_button1" onClick={drawCanvasImage}>立即生成</div>
                 <label id="btn" className="bot_button2" htmlFor='id-uploadimg' onClick={uploadImg}>重新选择</label>
-            </div>
+        </div>
         </div>:null
     )
 }
