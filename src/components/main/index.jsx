@@ -115,7 +115,7 @@ const Main =()=>{
             </div>
             <div className="content">
                 <canvas ref={downloadRef} id='canvas'></canvas>
-               {isDownload&&(!isChoose)?<img src={downloadURL} className="downloadURL"/>:<label className="hidden" htmlFor="id-uploadimg">
+               {isDownload&&(!isChoose)?<label className='wrapDownloadURL'><img src={downloadURL} className="downloadURL"/></label>:<label className="hidden" htmlFor="id-uploadimg">
                     {kuang?<img id="id_img2" src={kuang} alt="" className="img_hidden"></img>: ""}
                 </label>}
                 <label className="upload" htmlFor="id-uploadimg">
