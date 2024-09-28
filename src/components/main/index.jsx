@@ -1,10 +1,6 @@
 import React, { useRef, useState , useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import './index.css';
-import jiahao from '../../images/jiahao.png';
-import background from '../../images/background.jpg'
-
-
 
 const Main =()=>{
 
@@ -50,6 +46,7 @@ const Main =()=>{
         setKuang(e.target.src)
         setIsChoose(true)
         localStorage.setItem('kuang',e.target.src)
+        console.log("kuang",e.target.src);
     }
 
     function drawCanvasImage() {
@@ -102,6 +99,7 @@ const Main =()=>{
             const event = new MouseEvent("click"); // 创建一个单击事件
             a.download = name || "avatar"; // 设置图片名称
             a.href = url; // 将生成的URL设置为a.href属性
+            console.log(url);
             a.dispatchEvent(event); // 触发a的单击事件
         }
     }
@@ -110,7 +108,7 @@ const Main =()=>{
         isMobile?
         <div className="body">
             <div className='photo'>
-                <img src={background} alt="" className="background"></img>
+                <img src='https://ossfresh-test.muxixyz.com/background-row.jpg' alt="" className="background"></img>
                 <div className="zhuangshi"></div>
             </div>
             <div className="content">
@@ -120,7 +118,7 @@ const Main =()=>{
                 </label>}
                 <label className="upload" htmlFor="id-uploadimg">
                    <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e)=>uploadImg(e)} accept='image/*'/>
-                     {imgURL?<img className='the-img' src={imgURL} />:<label className="upload_button" htmlFor='id-uploadimg'  ><img src={jiahao} className='uploadlogo'></img></label>}
+                     {imgURL?<img className='the-img' src={imgURL} />:<label className="upload_button" htmlFor='id-uploadimg'  ><img src='https://ossfresh-test.muxixyz.com/jiahao.png' className='uploadlogo'></img></label>}
                 </label>
                 {/* <input type="file" onTouchStart={chooseImg} accept='image/*'/> */}
                 <div className="tip_text">请选择你的个性头像框</div>
@@ -131,44 +129,16 @@ const Main =()=>{
                 <div className="box1">
                     <div className="box2">
                         <div className="box3">
-                            <img id='img1' className='txkuang' src='http://osscelebrate.muxixyz.com/one.647280f8.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
+                            <img id='img1' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnu-green.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
-                        <div className="p">桂花枝头</div>
                     </div>
                     <div className="box2">
                         <div className="box3">
-                            <img id='img2' className='txkuang' src='http://osscelebrate.muxixyz.com/two.38db8952.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
+                            <img id='img2' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnu-red.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
                         </div>
-                        <div className="p">桂花朵朵</div>
-                    </div>
-                    <div className="box2">
-                        <div className="box3">
-                            <img id='img3' className='txkuang' src='http://osscelebrate.muxixyz.com/three.5cf31062.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
-                        </div>
-                        <div className="p">桂花茶饮</div>
                     </div>
                 </div>
-                <div className="box1">
-                    <div className="box2">
-                        <div className="box3">
-                            <img id='img4' className='txkuang' src='http://osscelebrate.muxixyz.com/four.1f4a5f26.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
-                        </div>
-                        <div className="p">祥云贺庆</div>
-                    </div>
-                    <div className="box2">
-                        <div className="box3">
-                            <img id='img9' className='txkuang' src='http://osscelebrate.muxixyz.com/nine.a025a668.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
-                        </div>
-                        <div className="p">119校庆红</div>
-                    </div>
-                    <div className="box2">
-                        <div className="box3">
-                            <img id='img8' className='txkuang' src='http://osscelebrate.muxixyz.com/eight.226b4eef.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
-                        </div>
-                        <div className="p">华师红心</div>
-                    </div>
-                </div>
-                <div className="box1">
+                {/* <div className="box1">
                     <div className="box2">
                         <div className="box3">
                             <img id='img5' className='txkuang' src='http://osscelebrate.muxixyz.com/five.78769362.png' alt='' onClick={chooseOutimg} onTouchStart={chooseOutimg}></img>
@@ -181,7 +151,7 @@ const Main =()=>{
                         </div>
                         <div className="p">镂空华师绿</div>
                     </div>
-                </div>
+                </div> */}
             </div>
         </div>
         <div className="bottom">
@@ -193,126 +163,3 @@ const Main =()=>{
 }
 
 export default Main;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import React, { useRef, useState ,useEffect} from 'react';
-// import './index.css';
-// import background from '../../images/background.jpg';
-// import jiahao from '../../images/jiahao.png'
-
-
-
-
-
-// const Main =()=>{
-//     const navigate = useNavigate()
-//     const [imgURL,setImgURL] = useState('')
-//     const [img,setImg] = useState('')
-
-   
-//     return (
-//         <div className="body">
-//             <div className='photo'>
-//                 <img src={background} alt="" className="background"></img>
-//                 <div className="zhuangshi"></div>
-//             </div>
-//             <div className="content">
-                
-
-//                 <div className="tip_text">请选择你的个性头像框</div>
-//                 <div className="choices">
-//                     <div className="box1">
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                     </div>
-//                     <div className="box1">
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                     </div>
-//                     <div className="box1">
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                     </div>
-//                     <div className="box1">
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                     </div>
-//                     <div className="box1">
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                         <div className="box2">
-//                             <div className="box3"></div>
-//                             <div className="p">头像框</div>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div className="bottom">
-//                 <div className="bot_button" >立即生成</div>
-//             </div>
-//         </div>
-//     )
-// }
-
-// export default Main;
-
-
-
