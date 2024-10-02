@@ -1,66 +1,56 @@
 import Cropper from 'cropperjs';
 import './index.css'
 import './cropper.css'
-import { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router';
-export default function Cutt() {
+import { useEffect, useRef } from 'react';
 
-  const location = useLocation();
-  const navigate = useNavigate()
-  const [crop,setCrop] = useState(undefined)
-  const [imgURL,setImgURL] = useState(()=>{
-    if(location.state){
-      console.log(location.state.imgURL);
-      return location.state.imgURL
-    }
-  })
-  // const navigate = useNavigate()
-
-  // location.state.url
-  // nav('xxx', {state: {url: imgURL}})
+export default function Cutt(props) {
+  const {setIsEdit, imgURL, setImgURL} = props
+  const cropperRef = useRef(null);
+  const cropperInstance = useRef(null);
 
     useEffect(() => {
-        const image = document.getElementById('image')
-        const cropper = new Cropper(image,{
-        aspectRatio:1/1,
-        viewMode:1,
-        dragMode:2,
-        cropBoxMovable:true,
-        cropBoxResizable:false,
-        zoomOnWheel:true,
-        zoomOnTouch:true,
-        //preview:document.querySelectorAll('#preview'),
-        crop(event){
-          // console.log(event.detail.x);
-          // console.log(event.detail.y);
-          // console.log(event.detail.width);
-          // console.log(event.detail.height);
-          // console.log(event.detail.rotate);
-          // console.log(event.detail.scaleX);
-          // console.log(event.detail.scaleY);
-        },
-      })
-      setCrop(cropper)
-    },[])
-    
-  const reupload = (e)=>{
-    const files = e.target.files
-    const file = files[0]
-    const imgURL = URL.createObjectURL(file)
-    setImgURL(imgURL)
-    crop.replace(imgURL,false)
-  }
+      if (cropperRef.current && imgURL) {
+        console.log('imgURL', imgURL);
+        cropperInstance.current = new Cropper(cropperRef.current, {
+          aspectRatio: 1 / 1,
+          viewMode: 1,
+          dragMode: 2,
+          cropBoxMovable: true,
+          cropBoxResizable: false,
+          zoomOnWheel: true,
+          zoomOnTouch: true,
+        })}
 
-  const clip = ()=>{
-    const imgURL = crop.getCroppedCanvas().toDataURL()
-    setImgURL(imgURL)
-    navigate('/home',{state:{imgURL:imgURL}})
-  }
+      return () => {
+        if (cropperInstance.current) {
+          cropperInstance.current.destroy(); // 清理
+        }
+    };
+    },[imgURL])
+
+    const reupload = (e) => {
+      const files = e.target.files;
+      if (files.length > 0) {
+        const file = files[0];
+        const newImgURL = URL.createObjectURL(file);
+        setImgURL(newImgURL);
+        cropperInstance.current.replace(newImgURL); // 使用cropper实例替换图像
+      }
+    };
+
+    const clip = () => {
+      if (cropperInstance.current) {
+        const croppedCanvas = cropperInstance.current.getCroppedCanvas();
+        const croppedImgURL = croppedCanvas.toDataURL();
+        setImgURL(croppedImgURL);
+        setIsEdit(false);
+      }
+    };
 
   return (
     <div className='box'>
       <div className='container'>
-        <img id='image' src={imgURL}/>
+        <img ref={cropperRef} id='image' src={imgURL} alt='Avatar'/>
       </div>
       <div className='btn'>
         <input className='reupload' onChange={(e)=>reupload(e)} type='file' id='reupload' accept='image/*'/>

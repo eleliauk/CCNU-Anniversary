@@ -4,16 +4,12 @@ import Main from "../components/main";
 import React from "react";
 const router = [
     {
-        path:'/home',
+        path:'/',
         element: <Main/>
     },
     {
         path:'/editImage',
         element:<Cutt/>
-    },
-    {
-        path:'/',
-        element:<Navigate to='/home'/>
     },
 
 ]

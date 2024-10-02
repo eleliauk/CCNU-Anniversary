@@ -1,18 +1,19 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import './index.css';
+import Cutt from '../cutavatar';
 
 const Main = () => {
     const [isMobile, setIsMobile] = useState(false);
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const location = useLocation();
     const [imgURL, setImgURL] = useState(location.state ? location.state.imgURL : '');
     const [id, setId] = useState('');
     const [kuang, setKuang] = useState(localStorage.getItem('kuang') ? localStorage.getItem('kuang') : '');
-    const [context, setContext] = useState('');
     const [downloadURL, setDownloadURL] = useState('');
     const [isDownload, setIsDownload] = useState(false);
     const [isChoose, setIsChoose] = useState(true);
+    const [isEdit, setIsEdit] = useState(false);
     const downloadRef = useRef();
 
     useEffect(() => {
@@ -32,7 +33,8 @@ const Main = () => {
         const imgURL = URL.createObjectURL(file);
         setImgURL(imgURL);
         setIsChoose(true);
-        navigate('/editImage', { state: { imgURL: imgURL } });
+        setIsEdit(true);
+        console.log("isedit",isEdit);
     };
 
     const chooseOutimg = (e) => {
@@ -83,7 +85,9 @@ const Main = () => {
     };
 
     return (
-        isMobile ?
+        isEdit ? <Cutt imgURL={imgURL} setImgURL={setImgURL} kuang={kuang} setKuang={setKuang} setIsEdit={setIsEdit}/> :
+        (
+            isMobile ?
             <div className="body">
                 <div className='photo'>
                     <img src='https://ossfresh-test.muxixyz.com/background-row.jpg' alt="" className="background"></img>
@@ -125,6 +129,7 @@ const Main = () => {
                     <label id="btn" className="bot_button2" htmlFor='id-uploadimg' onClick={uploadImg}>重新选择</label>
                 </div>
             </div> : null
+        )
     );
 };
 
