@@ -113,12 +113,12 @@ const Main = () => {
                         <div className="box1">
                             <div className="box2">
                                 <div className="box3">
-                                    <img id='img1' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnu-green.png' alt='' onClick={chooseOutimg}></img>
+                                    <img id='img1' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnuGreen.png' alt='' onClick={chooseOutimg}></img>
                                 </div>
                             </div>
                             <div className="box2">
                                 <div className="box3">
-                                    <img id='img2' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnu-red.png' alt='' onClick={chooseOutimg}></img>
+                                    <img id='img2' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnuRed.png' alt='' onClick={chooseOutimg}></img>
                                 </div>
                             </div>
                         </div>
