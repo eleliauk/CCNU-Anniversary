@@ -14,6 +14,7 @@ const Main = () => {
     const [isDownload, setIsDownload] = useState(false);
     const [isChoose, setIsChoose] = useState(true);
     const [isEdit, setIsEdit] = useState(false);
+    const [isTip, setIsTip] = useState(false);
     const downloadRef = useRef();
 
     useEffect(() => {
@@ -74,15 +75,25 @@ const Main = () => {
         }
     }
 
-    const downloadImage = () => {
-        const url = downloadRef.current.toDataURL();
-        const a = document.createElement("a");
-        const event = new MouseEvent("click");
-        a.download = "avatar";
-        a.href = url;
-        console.log(url);
-        a.dispatchEvent(event);
-    };
+    const downloadImage = ()=>{
+        if(window.innerWidth < 1000 ) {
+            const url = downloadRef.current.toDataURL()
+            setDownloadURL(url)
+            setIsDownload(true)
+            setIsTip(true)
+            setTimeout(() => {
+                setIsTip(false);
+              }, 3000);
+            setIsChoose(false)
+        } else {
+            const url = downloadRef.current.toDataURL();
+            const a = document.createElement("a"); // 生成一个a元素
+            const event = new MouseEvent("click"); // 创建一个单击事件
+            a.download = name || "avatar"; // 设置图片名称
+            a.href = url; // 将生成的URL设置为a.href属性
+            a.dispatchEvent(event); // 触发a的单击事件
+        }
+    }
 
     return (
         isEdit ? <Cutt imgURL={imgURL} setImgURL={setImgURL} kuang={kuang} setKuang={setKuang} setIsEdit={setIsEdit}/> :
@@ -109,6 +120,9 @@ const Main = () => {
                             </label>}
                     </label>
                     <div className="tip_text">请选择你的个性头像框</div>
+                    {isTip&&<div className='Message'>
+                        <p>长按保存头像哦~</p>
+                    </div>}
                     <div className="choices">
                         <div className="box1">
                             <div className="box2">
