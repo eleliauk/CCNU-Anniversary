@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import './index.css';
 import Cutt from '../cutavatar';
-
+import Upload from '../../images/jiahao.png'
 const Main = () => {
     const [isMobile, setIsMobile] = useState(false);
     // const navigate = useNavigate();
@@ -101,7 +101,7 @@ const Main = () => {
             isMobile ?
             <div className="body">
                 <div className='photo'>
-                    <img src='https://ossfresh-test.muxixyz.com/background-row.jpg' alt="" className="background"></img>
+                    <img src='https://mini-project.muxixyz.com/WechatIMG11.jpg' alt="" className="background"></img>
                     <div className="zhuangshi"></div>
                 </div>
                 <div className="content">
@@ -116,7 +116,7 @@ const Main = () => {
                         <input type='file' id='id-uploadimg' className='uploadimg' onChange={(e) => uploadImg(e)} accept='image/*' />
                         {imgURL ? <img className='the-img' src={imgURL} /> :
                             <label className="upload_button" htmlFor='id-uploadimg'>
-                                <img src='https://ossfresh-test.muxixyz.com/jiahao.png' className='uploadlogo'></img>
+                                <img src={Upload} className='uploadlogo'></img>
                             </label>}
                     </label>
                     <div className="tip_text">请选择你的个性头像框</div>
@@ -127,14 +127,14 @@ const Main = () => {
                         <div className="box1">
                             <div className="box2">
                                 <div className="box3">
-                                    <img id='img1' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnuGreen.png' alt='' onClick={chooseOutimg}></img>
+                                    <img id='img1' className='txkuang' src="https://mini-project.muxixyz.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250313213000.png" alt='' onClick={chooseOutimg}></img>
                                 </div>
                             </div>
-                            <div className="box2">
+                            {/* <div className="box2">
                                 <div className="box3">
                                     <img id='img2' className='txkuang' src='https://ossfresh-test.muxixyz.com/ccnuRed.png' alt='' onClick={chooseOutimg}></img>
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>
