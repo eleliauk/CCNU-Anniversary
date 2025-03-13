@@ -127,7 +127,7 @@ const Main = () => {
                         <div className="box1">
                             <div className="box2">
                                 <div className="box3">
-                                    <img id='img1' className='txkuang' src="https://mini-project.muxixyz.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20250313213000.png" alt='' onClick={chooseOutimg}></img>
+                                    <img id='img1' className='txkuang' src="https://mini-project.muxixyz.com/1.png" alt='' onClick={chooseOutimg}></img>
                                 </div>
                             </div>
                             {/* <div className="box2">
